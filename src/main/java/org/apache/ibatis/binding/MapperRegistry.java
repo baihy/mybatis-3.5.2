@@ -15,16 +15,12 @@
  */
 package org.apache.ibatis.binding;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
 import org.apache.ibatis.builder.annotation.MapperAnnotationBuilder;
 import org.apache.ibatis.io.ResolverUtil;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSession;
+
+import java.util.*;
 
 /**
  * @author Clinton Begin
@@ -68,8 +64,9 @@ public class MapperRegistry {
         // It's important that the type is added before the parser is run
         // otherwise the binding may automatically be attempted by the
         // mapper parser. If the type is already known, it won't try.
+        // MapperAnnotationBuilder中，会根据根据类名查找对应的Mapper.xml文件
         MapperAnnotationBuilder parser = new MapperAnnotationBuilder(config, type);
-        parser.parse();
+        parser.parse(); // 这里是解析Mapper接口
         loadCompleted = true;
       } finally {
         if (!loadCompleted) {
@@ -91,7 +88,8 @@ public class MapperRegistry {
    */
   public void addMappers(String packageName, Class<?> superType) {
     ResolverUtil<Class<?>> resolverUtil = new ResolverUtil<>();
-    resolverUtil.find(new ResolverUtil.IsA(superType), packageName);
+    ResolverUtil.IsA isA = new ResolverUtil.IsA(superType);
+    resolverUtil.find(isA, packageName);
     Set<Class<? extends Class<?>>> mapperSet = resolverUtil.getClasses();
     for (Class<?> mapperClass : mapperSet) {
       addMapper(mapperClass);

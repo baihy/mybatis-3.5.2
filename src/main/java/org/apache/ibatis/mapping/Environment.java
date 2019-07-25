@@ -15,9 +15,9 @@
  */
 package org.apache.ibatis.mapping;
 
-import javax.sql.DataSource;
-
 import org.apache.ibatis.transaction.TransactionFactory;
+
+import javax.sql.DataSource;
 
 /**
  * @author Clinton Begin
@@ -66,6 +66,7 @@ public final class Environment {
     }
 
     public Environment build() {
+      // 通过id，事务管理工厂，数据源构建一个环境。
       return new Environment(this.id, this.transactionFactory, this.dataSource);
     }
 
