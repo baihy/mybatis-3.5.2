@@ -17,3 +17,6 @@
  * Type handlers.
  */
 package org.apache.ibatis.type;
+
+
+// 返回类型对应

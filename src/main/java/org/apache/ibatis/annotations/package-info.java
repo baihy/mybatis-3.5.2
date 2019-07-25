@@ -18,3 +18,4 @@
  */
 package org.apache.ibatis.annotations;
 
+// 注解相关 比如select insert

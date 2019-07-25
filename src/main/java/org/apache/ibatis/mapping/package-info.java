@@ -17,3 +17,7 @@
  * Base package for mapping.
  */
 package org.apache.ibatis.mapping;
+
+
+
+// mapper相关的封装

@@ -17,3 +17,6 @@
  * Base package for handing plugins.
  */
 package org.apache.ibatis.plugin;
+
+
+// 拦截器

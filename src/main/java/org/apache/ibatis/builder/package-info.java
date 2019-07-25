@@ -17,3 +17,7 @@
  * Base package for the Configuration building code
  */
 package org.apache.ibatis.builder;
+
+
+
+// 解析xml相关

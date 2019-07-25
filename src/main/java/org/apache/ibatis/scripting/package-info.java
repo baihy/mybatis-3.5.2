@@ -17,3 +17,6 @@
  * Base package for languages.
  */
 package org.apache.ibatis.scripting;
+
+
+// 数据厂家
