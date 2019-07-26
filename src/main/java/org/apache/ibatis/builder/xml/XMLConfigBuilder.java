@@ -391,7 +391,7 @@ public class XMLConfigBuilder extends BaseBuilder {
                         Class<?> mapperInterface = Resources.classForName(mapperClass);
                         configuration.addMapper(mapperInterface);//在这里面，会根据接口的信息，对应的mapper.xml文件
                     } else {
-                        throw new BuilderException("A mapper element may only specify a url, resource or class, but not more than one.");
+                        throw new BuilderException("A com.baihy.mapper element may only specify a url, resource or class, but not more than one.");
                     }
                 }
             }

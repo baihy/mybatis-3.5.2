@@ -4,7 +4,7 @@ import com.baihy.domain.User;
 
 /**
  * @projectName: mybatis
- * @packageName: com.baihy.mapper
+ * @packageName: com.baihy.mapper.baihy.com.baihy.mapper
  * @description:
  * @author: huayang.bai
  * @date: 2019/07/25 9:53

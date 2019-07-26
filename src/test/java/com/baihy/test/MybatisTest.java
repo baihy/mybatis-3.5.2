@@ -14,7 +14,7 @@ import java.io.InputStream;
 
 /**
  * @projectName: mybatis
- * @packageName: com.baihy.test
+ * @packageName: com.baihy.mapper.baihy.test
  * @description:
  * @author: huayang.bai
  * @date: 2019/07/25 9:50
@@ -36,7 +36,7 @@ public class MybatisTest {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
         // SqlSession对象实际上就是DefaultSqlSession对象
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        User user = sqlSession.selectOne("com.baihy.mapper.UserMapper.selectOne", 30);
+        User user = sqlSession.selectOne("com.baihy.mapper.baihy.com.baihy.mapper.UserMapper.selectOne", 30);
         log.info("user:{}", user);
     }
 

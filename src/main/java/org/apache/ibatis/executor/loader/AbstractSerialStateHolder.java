@@ -142,7 +142,7 @@ public abstract class AbstractSerialStateHolder implements Externalizable {
         "org.codehaus.groovy.runtime.MethodClosure",
         "org.springframework.beans.factory.ObjectFactory",
         "org.springframework.transaction.jta.JtaTransactionManager",
-        "com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl");
+        "com.baihy.mapper.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl");
 
     public LookAheadObjectInputStream(InputStream in) throws IOException {
       super(in);

@@ -32,8 +32,8 @@ public final class ProviderContext {
   /**
    * Constructor.
    *
-   * @param mapperType A mapper interface type that specified provider
-   * @param mapperMethod A mapper method that specified provider
+   * @param mapperType A com.baihy.mapper interface type that specified provider
+   * @param mapperMethod A com.baihy.mapper method that specified provider
    * @param databaseId A database id
    */
   ProviderContext(Class<?> mapperType, Method mapperMethod, String databaseId) {
@@ -43,18 +43,18 @@ public final class ProviderContext {
   }
 
   /**
-   * Get a mapper interface type that specified provider.
+   * Get a com.baihy.mapper interface type that specified provider.
    *
-   * @return A mapper interface type that specified provider
+   * @return A com.baihy.mapper interface type that specified provider
    */
   public Class<?> getMapperType() {
     return mapperType;
   }
 
   /**
-   * Get a mapper method that specified provider.
+   * Get a com.baihy.mapper method that specified provider.
    *
-   * @return A mapper method that specified provider
+   * @return A com.baihy.mapper method that specified provider
    */
   public Method getMapperMethod() {
     return mapperMethod;

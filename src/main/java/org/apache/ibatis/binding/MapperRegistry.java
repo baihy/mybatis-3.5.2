@@ -45,7 +45,7 @@ public class MapperRegistry {
     try {
       return mapperProxyFactory.newInstance(sqlSession);
     } catch (Exception e) {
-      throw new BindingException("Error getting mapper instance. Cause: " + e, e);
+      throw new BindingException("Error getting com.baihy.mapper instance. Cause: " + e, e);
     }
   }
 
@@ -63,7 +63,7 @@ public class MapperRegistry {
         knownMappers.put(type, new MapperProxyFactory<>(type));
         // It's important that the type is added before the parser is run
         // otherwise the binding may automatically be attempted by the
-        // mapper parser. If the type is already known, it won't try.
+        // com.baihy.mapper parser. If the type is already known, it won't try.
         // MapperAnnotationBuilder中，会根据根据类名查找对应的Mapper.xml文件
         MapperAnnotationBuilder parser = new MapperAnnotationBuilder(config, type);
         parser.parse(); // 这里是解析Mapper接口

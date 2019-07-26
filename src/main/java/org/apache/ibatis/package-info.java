@@ -14,6 +14,6 @@
  *    limitations under the License.
  */
 /**
- * The MyBatis data mapper framework makes it easier to use a relational database with object-oriented applications.
+ * The MyBatis data com.baihy.mapper framework makes it easier to use a relational database with object-oriented applications.
  */
 package org.apache.ibatis;

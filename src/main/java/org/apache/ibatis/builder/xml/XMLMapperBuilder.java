@@ -414,7 +414,7 @@ public class XMLMapperBuilder extends BaseBuilder {
       if (boundType != null) {
         if (!configuration.hasMapper(boundType)) {
           // Spring may not know the real resource name so we set a flag
-          // to prevent loading again this resource from the mapper interface
+          // to prevent loading again this resource from the com.baihy.mapper interface
           // look at MapperAnnotationBuilder#loadXmlResource
           configuration.addLoadedResource("namespace:" + namespace);
           configuration.addMapper(boundType);

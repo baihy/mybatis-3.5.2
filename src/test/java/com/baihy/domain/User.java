@@ -4,7 +4,7 @@ import lombok.Data;
 
 /**
  * @projectName: mybatis
- * @packageName: com.baihy.domain
+ * @packageName: com.baihy.mapper.baihy.domain
  * @description:
  * @author: huayang.bai
  * @date: 2019/07/25 9:53

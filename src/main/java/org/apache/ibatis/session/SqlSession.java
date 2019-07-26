@@ -268,10 +268,10 @@ public interface SqlSession extends Closeable {
   Configuration getConfiguration();
 
   /**
-   * Retrieves a mapper.
-   * @param <T> the mapper type
+   * Retrieves a com.baihy.mapper.
+   * @param <T> the com.baihy.mapper type
    * @param type Mapper interface class
-   * @return a mapper bound to this SqlSession
+   * @return a com.baihy.mapper bound to this SqlSession
    */
   <T> T getMapper(Class<T> type);
 

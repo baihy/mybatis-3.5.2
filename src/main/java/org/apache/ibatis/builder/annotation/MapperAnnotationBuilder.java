@@ -127,7 +127,7 @@ public class MapperAnnotationBuilder {
       // #1347
       InputStream inputStream = type.getResourceAsStream("/" + xmlResource);
       if (inputStream == null) {
-        // Search XML mapper that is not in the module but in the classpath.
+        // Search XML com.baihy.mapper that is not in the module but in the classpath.
         try {
           inputStream = Resources.getResourceAsStream(type.getClassLoader(), xmlResource);
         } catch (IOException e2) {

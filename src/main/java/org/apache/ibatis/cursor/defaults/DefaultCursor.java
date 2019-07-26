@@ -32,7 +32,7 @@ import org.apache.ibatis.session.RowBounds;
  * This is the default implementation of a MyBatis Cursor.
  * This implementation is not thread safe.
  *
- * @author Guillaume Darmont / guillaume@dropinocean.com
+ * @author Guillaume Darmont / guillaume@dropinocean.com.baihy.mapper
  */
 public class DefaultCursor<T> implements Cursor<T> {
 

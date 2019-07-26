@@ -38,12 +38,12 @@ public interface LanguageDriver {
   ParameterHandler createParameterHandler(MappedStatement mappedStatement, Object parameterObject, BoundSql boundSql);
 
   /**
-   * Creates an {@link SqlSource} that will hold the statement read from a mapper xml file.
+   * Creates an {@link SqlSource} that will hold the statement read from a com.baihy.mapper xml file.
    * It is called during startup, when the mapped statement is read from a class or an xml file.
    *
    * @param configuration The MyBatis configuration
    * @param script XNode parsed from a XML file
-   * @param parameterType input parameter type got from a mapper method or specified in the parameterType xml attribute. Can be null.
+   * @param parameterType input parameter type got from a com.baihy.mapper method or specified in the parameterType xml attribute. Can be null.
    * @return
    */
   SqlSource createSqlSource(Configuration configuration, XNode script, Class<?> parameterType);
@@ -54,7 +54,7 @@ public interface LanguageDriver {
    *
    * @param configuration The MyBatis configuration
    * @param script The content of the annotation
-   * @param parameterType input parameter type got from a mapper method or specified in the parameterType xml attribute. Can be null.
+   * @param parameterType input parameter type got from a com.baihy.mapper method or specified in the parameterType xml attribute. Can be null.
    * @return
    */
   SqlSource createSqlSource(Configuration configuration, String script, Class<?> parameterType);
