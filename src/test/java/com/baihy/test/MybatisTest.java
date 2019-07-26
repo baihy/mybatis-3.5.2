@@ -50,7 +50,7 @@ public class MybatisTest {
         // userMapper是一个代理对象
         String userMapperClassName = userMapper.getClass().getName();
         System.out.println(userMapperClassName);
-        User user = userMapper.selectOne(30);
+        User user = userMapper.selectOne(30); //  只有执行这一行代码的时候，才会执行动态代理对象的invoke方法
         User user1 = userMapper.selectOne(30);
         log.info("user:{}", user);
         log.info("user1:{}", user1);
