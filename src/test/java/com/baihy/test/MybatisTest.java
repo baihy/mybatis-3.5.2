@@ -5,9 +5,12 @@ import com.baihy.domain.User;
 import com.baihy.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.logging.Log;
+import org.apache.ibatis.logging.LogFactory;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -41,6 +44,7 @@ public class MybatisTest {
     }
 
 
+    @Test
     public void test2() throws IOException {
         // 通过类加载器，获取到一个文件流
         InputStream is = Resources.getResourceAsStream("mybatis-config.xml");
@@ -54,6 +58,23 @@ public class MybatisTest {
         User user1 = userMapper.selectOne(30);
         log.info("user:{}", user);
         log.info("user1:{}", user1);
+    }
+    
+    @Test
+    public void testLog(){
+        try {
+            InputStream is = Resources.getResourceAsStream("mybatis-config.xml");
+            SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
+            SqlSession sqlSession = sqlSessionFactory.openSession();
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            User user = userMapper.selectOne(1);
+            System.out.println(user);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Log log = LogFactory.getLog(MybatisTest.class);
+        System.out.println(log.isDebugEnabled());
     }
 
 
