@@ -62,7 +62,15 @@ public final class LogFactory {
         }
     }
 
+    /**
+     * 这个方法是mybatis支持自定义日志。
+     *      mybatis实现自定义日志的方式是：
+     *          1.为org.apache.ibatis.logging.Log接口提供一个实现类。
+     *          2.在所有的mybatis的最前面调用LogFactory类的静态方法useCustomLogging，并把Log接口的实现类的全类名作为一个字符串传入即可。
+     *
+     */
     public static synchronized void useCustomLogging(Class<? extends Log> clazz) {
+        // 这个方法的作用就是调用把自定义的日志实现类，放入到mybatis中。
         setImplementation(clazz);
     }
 
