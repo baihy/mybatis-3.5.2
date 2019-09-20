@@ -47,6 +47,8 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         // jdk动态代理的方法调用
         try {
+            // 判断方法目标类是否是Object类型的
+            // method.getDeclaringClass()此Method对象表示的方法的类或接口的Class对象。
             if (Object.class.equals(method.getDeclaringClass())) {
                 return method.invoke(this, args);
             } else if (method.isDefault()) {
@@ -65,6 +67,7 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
          * 在代理对象中的invoke的对象中，执行指定的方法。
          * <核心代码/>
          */
+        // MapperMethod就是类似于Class或BeanDefinition对象,MapperMethod描述的是Mapper接口中的抽象方法。
         final MapperMethod mapperMethod = cachedMapperMethod(method);
         return mapperMethod.execute(sqlSession, args);
     }
