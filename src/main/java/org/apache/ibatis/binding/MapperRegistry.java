@@ -60,6 +60,10 @@ public class MapperRegistry {
       }
       boolean loadCompleted = false;
       try {
+        /**
+         * <p>核心代码</p>
+         *  把传入的Mapper接口创建Mapper接口的代理类，并把代理类对象放入Map集合中。
+         * */
         knownMappers.put(type, new MapperProxyFactory<>(type));
         // It's important that the type is added before the parser is run
         // otherwise the binding may automatically be attempted by the
