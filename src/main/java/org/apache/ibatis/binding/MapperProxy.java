@@ -47,6 +47,8 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         // jdk动态代理的方法调用
         try {
+            // 判断方法目标类是否是Object类型的
+            // method.getDeclaringClass()此Method对象表示的方法的类或接口的Class对象。
             if (Object.class.equals(method.getDeclaringClass())) {
                 return method.invoke(this, args);
             } else if (method.isDefault()) {
@@ -55,8 +57,18 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
         } catch (Throwable t) {
             throw ExceptionUtil.unwrapThrowable(t);
         }
-        final MapperMethod mapperMethod = cachedMapperMethod(method);
+
+
+
+
+
         // 通过jdk的动态代理，MapperMethod的执行方法
+        /**
+         * 在代理对象中的invoke的对象中，执行指定的方法。
+         * <核心代码/>
+         */
+        // MapperMethod就是类似于Class或BeanDefinition对象,MapperMethod描述的是Mapper接口中的抽象方法。
+        final MapperMethod mapperMethod = cachedMapperMethod(method);
         return mapperMethod.execute(sqlSession, args);
     }
 
@@ -67,14 +79,12 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
 
     private Object invokeDefaultMethod(Object proxy, Method method, Object[] args)
             throws Throwable {
-        final Constructor<MethodHandles.Lookup> constructor = MethodHandles.Lookup.class
-                .getDeclaredConstructor(Class.class, int.class);
+        final Constructor<MethodHandles.Lookup> constructor = MethodHandles.Lookup.class.getDeclaredConstructor(Class.class, int.class);
         if (!constructor.isAccessible()) {
             constructor.setAccessible(true);
         }
         final Class<?> declaringClass = method.getDeclaringClass();
-        return constructor
-                .newInstance(declaringClass,
+        return constructor.newInstance(declaringClass,
                         MethodHandles.Lookup.PRIVATE | MethodHandles.Lookup.PROTECTED
                                 | MethodHandles.Lookup.PACKAGE | MethodHandles.Lookup.PUBLIC)
                 .unreflectSpecial(method, declaringClass).bindTo(proxy).invokeWithArguments(args);

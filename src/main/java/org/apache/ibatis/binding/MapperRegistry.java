@@ -53,6 +53,9 @@ public class MapperRegistry {
     return knownMappers.containsKey(type);
   }
 
+  /**
+   * 注册Mapper接口，并把Mapper接口的代理对象放入knownMappers集合中
+   */
   public <T> void addMapper(Class<T> type) {
     if (type.isInterface()) {
       if (hasMapper(type)) {
@@ -60,10 +63,7 @@ public class MapperRegistry {
       }
       boolean loadCompleted = false;
       try {
-        /**
-         * <p>核心代码</p>
-         *  把传入的Mapper接口创建Mapper接口的代理类，并把代理类对象放入Map集合中。
-         * */
+        /*****<核心功能生成Mapper接口的实现类并把实现类的对象放入到Map集合中/>******/
         knownMappers.put(type, new MapperProxyFactory<>(type));
         // It's important that the type is added before the parser is run
         // otherwise the binding may automatically be attempted by the
