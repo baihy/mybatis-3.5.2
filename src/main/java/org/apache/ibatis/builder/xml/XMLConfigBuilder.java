@@ -389,7 +389,8 @@ public class XMLConfigBuilder extends BaseBuilder {
                     } else if (resource == null && url == null && mapperClass != null) {
                         // 这个mapperClass指的是Mapper接口
                         Class<?> mapperInterface = Resources.classForName(mapperClass);
-                        configuration.addMapper(mapperInterface);//在这里面，会根据接口的信息，对应的mapper.xml文件
+                        configuration.addMapper(mapperInterface);//在这里面，会根据接口的信息，去找对应的mapper.xml文件
+                        // 这样Mapper文件要和Mapper接口的地址放在一起。
                     } else {
                         throw new BuilderException("A com.baihy.mapper element may only specify a url, resource or class, but not more than one.");
                     }

@@ -226,7 +226,10 @@ public class MapperMethod {
 
     public SqlCommand(Configuration configuration, Class<?> mapperInterface, Method method) {
       final String methodName = method.getName();
+      // 获取method对象所描述的方法所在的类。
       final Class<?> declaringClass = method.getDeclaringClass();
+      // MappedStatement对象是一种数据结构。
+      // Mapper接口中的每一个方法都对应一个MappedStatement对象。而且还包含了sql语句
       MappedStatement ms = resolveMappedStatement(mapperInterface, methodName, declaringClass,
           configuration);
       if (ms == null) {
@@ -254,8 +257,17 @@ public class MapperMethod {
       return type;
     }
 
-    private MappedStatement resolveMappedStatement(Class<?> mapperInterface, String methodName,
-        Class<?> declaringClass, Configuration configuration) {
+    /**
+     * 这个方法仅仅是同过有限的信息，获取到MappedStatement对象，而不是把Mapper接口中的方法解析成MappedStatement对象。
+     *  把Mapper接口中的方法解析成MappedStatement对象的地方是：org.apache.ibatis.builder.annotation.MapperAnnotationBuilder#parse()这个方法中。
+     * @param mapperInterface
+     * @param methodName
+     * @param declaringClass
+     * @param configuration
+     * @return
+     */
+    private MappedStatement resolveMappedStatement(Class<?> mapperInterface, String methodName, Class<?> declaringClass, Configuration configuration) {
+      // 把接口名称和方法名作为statementId
       String statementId = mapperInterface.getName() + "." + methodName;
       if (configuration.hasStatement(statementId)) {
         return configuration.getMappedStatement(statementId);
@@ -264,8 +276,8 @@ public class MapperMethod {
       }
       for (Class<?> superInterface : mapperInterface.getInterfaces()) {
         if (declaringClass.isAssignableFrom(superInterface)) {
-          MappedStatement ms = resolveMappedStatement(superInterface, methodName,
-              declaringClass, configuration);
+          // 判断传入的Mapper接口是接口
+          MappedStatement ms = resolveMappedStatement(superInterface, methodName, declaringClass, configuration);
           if (ms != null) {
             return ms;
           }

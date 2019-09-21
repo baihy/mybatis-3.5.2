@@ -61,6 +61,7 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
     }
 
     private MapperMethod cachedMapperMethod(Method method) {
+        //Map集合中的方法computeIfAbsent含义是：表示当第一个参数为null时，把第二个参数Function函数式接口的方法返回值，返回。
         return methodCache.computeIfAbsent(method, k -> new MapperMethod(mapperInterface, method, sqlSession.getConfiguration()));
     }
 
