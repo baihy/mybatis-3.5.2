@@ -50,6 +50,7 @@ public class MapperRegistry {
   }
 
   public <T> boolean hasMapper(Class<T> type) {
+    // 判断Mapper接口是否已经初始化完成
     return knownMappers.containsKey(type);
   }
 
@@ -64,6 +65,7 @@ public class MapperRegistry {
       boolean loadCompleted = false;
       try {
         /*****<核心功能生成Mapper接口的实现类并把实现类的对象放入到Map集合中/>******/
+        //放到knownMappers集合中Mapper接口，还没有实例化Mapper接口的代理对象
         knownMappers.put(type, new MapperProxyFactory<>(type));
         // It's important that the type is added before the parser is run
         // otherwise the binding may automatically be attempted by the

@@ -15,10 +15,6 @@
  */
 package org.apache.ibatis.mapping;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import org.apache.ibatis.cache.Cache;
 import org.apache.ibatis.executor.keygen.Jdbc3KeyGenerator;
 import org.apache.ibatis.executor.keygen.KeyGenerator;
@@ -28,10 +24,19 @@ import org.apache.ibatis.logging.LogFactory;
 import org.apache.ibatis.scripting.LanguageDriver;
 import org.apache.ibatis.session.Configuration;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * @author Clinton Begin
  */
 public final class MappedStatement {
+
+  /**
+   * 维护了Mapper接口或mapper.xml文件中的sql语句。一个sql语句对应一个mappedStatement对象
+   */
+
 
   private String resource;
   private Configuration configuration;
@@ -183,6 +188,7 @@ public final class MappedStatement {
       return this;
     }
 
+    // 构建MappedStatement对象
     public MappedStatement build() {
       assert mappedStatement.configuration != null;
       assert mappedStatement.id != null;

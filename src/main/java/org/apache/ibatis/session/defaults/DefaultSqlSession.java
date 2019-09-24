@@ -43,6 +43,10 @@ import java.util.*;
  */
 public class DefaultSqlSession implements SqlSession {
 
+  /**
+   * mybaits中，所有的和数据库的交互对象是：MappedStatement ms = configuration.getMappedStatement(statement);
+   */
+
   private final Configuration configuration;
   private final Executor executor;
 
